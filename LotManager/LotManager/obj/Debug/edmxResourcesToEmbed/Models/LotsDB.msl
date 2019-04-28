@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LotsDBModelStoreContainer" CdmEntityContainer="LotsDBEntities1">
+    <EntitySetMapping Name="Lots">
+      <EntityTypeMapping TypeName="LotsDBModel.Lot">
+        <MappingFragment StoreEntitySet="Lot">
+          <ScalarProperty Name="totalCapacity" ColumnName="totalCapacity" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

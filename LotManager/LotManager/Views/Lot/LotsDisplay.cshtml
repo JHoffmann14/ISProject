@@ -1,0 +1,79 @@
+﻿@using LotManager.Models;
+@using LotManager.Controllers;
+@model IEnumerable<Lot>
+@{
+    ViewBag.Title = "LotsDisplay";
+
+    if (IsPost)
+    {
+        var name = Request.Form["LotName"];
+        var capacity = (Request.Form["LotCapacity"]);
+    }
+    Lot lot = new Lot();
+}
+
+<h2>LotsDisplay</h2>
+
+<table class="table table-hover" border="1">
+    <thead>
+        <tr>
+           <!-- <th>Id</th>-->
+            <th>Name</th>
+            <th>Capacity</th>
+        </tr>
+    </thead>
+    @foreach (Lot l in Model)
+    {
+        if(Model.Count() == 0){
+            <td>There are currently no lots listed</td>
+        }
+        <tr>
+            <!--<td>@l.id</td>-->
+            <td>@l.name</td>
+            <td>@l.totalCapacity</td>
+        </tr>
+    }
+</table>
+
+<form method="post" action="/Lot/addLot"style="padding-top: 10px">
+    <button type="submit" value="submit" class="btn btn-primary" id="add" name="">Add Lot</button>
+    
+    <label for="LotName">Lot Name:</label><input type="text" id="LotName" name="LotName" placeholder="Lot Name"/>
+    <label for="LotCapacity">Lot Size:</label><input type="number" id="LotCapacity" name="LotCapacity" placeholder="0"/>
+</form>
+
+<form method="post" action="/Lot/deleteLot" style="padding-top: 10px">
+    <button class="btn btn-danger" id="delete">Delete Lot</button>
+    <label for="LotName">Lot Name:</label><input type="text" id="LotName" name="LotName" placeholder="Lot Name" />
+</form>
+
+<form method="post" action="/Lot/updateLot" style="padding-top: 10px">
+    <button class="btn btn-warning" id="update" value="updateLot">Update Capacity</button>
+    <label for="LotName">Lot Name:</label><input type="text" id="LotName" name="LotName" placeholder="Lot Name" />
+    <label for="LotCapacity">New Lot Capacity:</label><input type="number" name="LotCapacity" placeholder="0" />
+</form>
+
+@section scripts {
+    <script>
+        $(function () {
+            $('#name').change(function () {
+                name = document.getElementById('name').value;
+                
+                alert(name);
+            })
+        })
+
+        $(function () {
+            $('#capacity').change(function () {
+                capacity = document.getElementById('capacity').value;
+              
+            })
+        })
+
+        $(function () {
+            $('#delete').click(function () {
+                FormData["name"] = name;
+            })
+        })
+    </script>    
+}
